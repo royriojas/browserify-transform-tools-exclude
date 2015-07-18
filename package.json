@@ -1,6 +1,6 @@
 {
   "name": "browserify-transform-tools-exclude",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a helper function to provide the ability to exclude certain files from the transform in a generic way",
   "main": "index.js",
   "scripts": {
