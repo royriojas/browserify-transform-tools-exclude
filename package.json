@@ -1,0 +1,54 @@
+{
+  "name": "browserify-transform-tools-exclude",
+  "version": "0.1.0",
+  "description": "a helper function to provide the ability to exclude certain files from the transform in a generic way",
+  "main": "index.js",
+  "scripts": {
+    "beautify": "esbeautifier index.js 'lib/**/*.js' 'specs/**/*.js'",
+    "beautify-check": "esbeautifier -k 'lib/**/*.js' index.js 'specs/**/*.js'",
+    "eslint": "eslinter index.js 'specs/**/*.js' 'lib/**/*.js'",
+    "lint": "npm run beautify && npm run eslint",
+    "test": "mocha-runner 'specs/**/*.js'",
+    "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
+    "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' npm run cover",
+    "check": "npm run beautify && npm run eslint",
+    "prepush": "npm run beautify-check && npm run eslint && npm test",
+    "changelog": "changelogx -f markdown -o ./changelog.md",
+    "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog'",
+    "install-hooks": "prepush install && changelogx install-hook",
+    "bump": "bumpery --verify='npm run prepush'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/royriojas/browserify-transform-tools-exclude"
+  },
+  "license": "MIT",
+  "author": "Roy Riojas (http://royriojas.com)",
+  "prepush": [
+    "npm run prepush"
+  ],
+  "devDependencies": {
+    "bumpery": "^1.1.1",
+    "changelogx": "^1.0.15",
+    "eslinter": "^2.0.5",
+    "istanbul": "^0.3.17",
+    "mocha-runner": "^1.0.8",
+    "prepush": "^2.0.4",
+    "proxyquire": "^1.6.0",
+    "watch-spawn": "^1.0.3"
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/royriojas/browserify-transform-tools-exclude/issues"
+  },
+  "homepage": "https://github.com/royriojas/browserify-transform-tools-exclude",
+  "keywords": [
+    "console filter",
+    "console",
+    "filter methods",
+    "browserify transform",
+    "browserify",
+    "override console",
+    "replace calls to require"
+  ]
+}
